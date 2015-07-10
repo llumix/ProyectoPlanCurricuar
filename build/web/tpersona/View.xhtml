@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TpersonaViewDlg" widgetVar="TpersonaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTpersonaTitle}">
+            <h:form id="TpersonaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tpersonaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonacedula}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonacedula}" title="#{bundle.ViewTpersonaTitle_tpersonacedula}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonanombre}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonanombre}" title="#{bundle.ViewTpersonaTitle_tpersonanombre}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonaapellido}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonaapellido}" title="#{bundle.ViewTpersonaTitle_tpersonaapellido}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonaprovincia}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonaprovincia}" title="#{bundle.ViewTpersonaTitle_tpersonaprovincia}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonaciudad}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonaciudad}" title="#{bundle.ViewTpersonaTitle_tpersonaciudad}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonadireccion}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonadireccion}" title="#{bundle.ViewTpersonaTitle_tpersonadireccion}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonatelefonofijo}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonatelefonofijo}" title="#{bundle.ViewTpersonaTitle_tpersonatelefonofijo}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonatelefonomovil}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonatelefonomovil}" title="#{bundle.ViewTpersonaTitle_tpersonatelefonomovil}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tpersonaemail}"/>
+                        <h:outputText value="#{tpersonaController.selected.tpersonaemail}" title="#{bundle.ViewTpersonaTitle_tpersonaemail}"/>
+                        <h:outputText value="#{bundle.ViewTpersonaLabel_tusuario}"/>
+                        <h:outputText value="#{tpersonaController.selected.tusuario}" title="#{bundle.ViewTpersonaTitle_tusuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TpersonaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

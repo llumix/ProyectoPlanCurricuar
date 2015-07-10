@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TfacultadViewDlg" widgetVar="TfacultadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTfacultadTitle}">
+            <h:form id="TfacultadViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tfacultadController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTfacultadLabel_tfacultadcodigo}"/>
+                        <h:outputText value="#{tfacultadController.selected.tfacultadcodigo}" title="#{bundle.ViewTfacultadTitle_tfacultadcodigo}"/>
+                        <h:outputText value="#{bundle.ViewTfacultadLabel_tfacultadnombre}"/>
+                        <h:outputText value="#{tfacultadController.selected.tfacultadnombre}" title="#{bundle.ViewTfacultadTitle_tfacultadnombre}"/>
+                        <h:outputText value="#{bundle.ViewTfacultadLabel_tfacultadvicedecano}"/>
+                        <h:outputText value="#{tfacultadController.selected.tfacultadvicedecano}" title="#{bundle.ViewTfacultadTitle_tfacultadvicedecano}"/>
+                        <h:outputText value="#{bundle.ViewTfacultadLabel_tfacultaddecano}"/>
+                        <h:outputText value="#{tfacultadController.selected.tfacultaddecano}" title="#{bundle.ViewTfacultadTitle_tfacultaddecano}"/>
+                        <h:outputText value="#{bundle.ViewTfacultadLabel_tescuela}"/>
+                        <h:outputText value="#{tfacultadController.selected.tescuela}" title="#{bundle.ViewTfacultadTitle_tescuela}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TfacultadViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

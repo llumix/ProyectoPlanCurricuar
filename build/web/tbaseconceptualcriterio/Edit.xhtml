@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbaseconceptualcriterioEditDlg" widgetVar="TbaseconceptualcriterioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbaseconceptualcriterioTitle}">
+            <h:form id="TbaseconceptualcriterioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbaseconceptualcriterioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbaseconceptualcriterioLabel_tbaseconceptualcriteriocodigo}" for="tbaseconceptualcriteriocodigo" />
+                        <p:inputText id="tbaseconceptualcriteriocodigo" value="#{tbaseconceptualcriterioController.selected.tbaseconceptualcriteriocodigo}" title="#{bundle.EditTbaseconceptualcriterioTitle_tbaseconceptualcriteriocodigo}" required="true" requiredMessage="#{bundle.EditTbaseconceptualcriterioRequiredMessage_tbaseconceptualcriteriocodigo}"/>
+                        <p:outputLabel value="#{bundle.EditTbaseconceptualcriterioLabel_tbaseconceptualcriterionombre}" for="tbaseconceptualcriterionombre" />
+                        <p:inputText id="tbaseconceptualcriterionombre" value="#{tbaseconceptualcriterioController.selected.tbaseconceptualcriterionombre}" title="#{bundle.EditTbaseconceptualcriterioTitle_tbaseconceptualcriterionombre}" />
+                        <p:outputLabel value="#{bundle.EditTbaseconceptualcriterioLabel_tbaseconceptualcriteriodescripcion}" for="tbaseconceptualcriteriodescripcion" />
+                        <p:inputText id="tbaseconceptualcriteriodescripcion" value="#{tbaseconceptualcriterioController.selected.tbaseconceptualcriteriodescripcion}" title="#{bundle.EditTbaseconceptualcriterioTitle_tbaseconceptualcriteriodescripcion}" />
+                        <p:outputLabel value="#{bundle.EditTbaseconceptualcriterioLabel_tcriteriosubcriteriocodigo}" for="tcriteriosubcriteriocodigo" />
+                        <p:selectOneMenu id="tcriteriosubcriteriocodigo" value="#{tbaseconceptualcriterioController.selected.tcriteriosubcriteriocodigo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tcriteriosubcriterioController.itemsAvailableSelectOne}"
+                                           var="tcriteriosubcriteriocodigoItem"
+                                           itemValue="#{tcriteriosubcriteriocodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbaseconceptualcriterioController.update}" value="#{bundle.Save}" update="display,:TbaseconceptualcriterioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbaseconceptualcriterioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbaseconceptualcriterioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

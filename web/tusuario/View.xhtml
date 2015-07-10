@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TusuarioViewDlg" widgetVar="TusuarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTusuarioTitle}">
+            <h:form id="TusuarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tusuarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTusuarioLabel_tusuariocedula}"/>
+                        <h:outputText value="#{tusuarioController.selected.tusuariocedula}" title="#{bundle.ViewTusuarioTitle_tusuariocedula}"/>
+                        <h:outputText value="#{bundle.ViewTusuarioLabel_tusuariopassword}"/>
+                        <h:outputText value="#{tusuarioController.selected.tusuariopassword}" title="#{bundle.ViewTusuarioTitle_tusuariopassword}"/>
+                        <h:outputText value="#{bundle.ViewTusuarioLabel_ttipocodigo}"/>
+                        <h:outputText value="#{tusuarioController.selected.ttipocodigo}" title="#{bundle.ViewTusuarioTitle_ttipocodigo}"/>
+                        <h:outputText value="#{bundle.ViewTusuarioLabel_tpersona}"/>
+                        <h:outputText value="#{tusuarioController.selected.tpersona}" title="#{bundle.ViewTusuarioTitle_tpersona}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TusuarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

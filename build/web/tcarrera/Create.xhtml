@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcarreraCreateDlg" widgetVar="TcarreraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTcarreraTitle}">
+            <h:form id="TcarreraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcarreraController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreracodigo}" for="tcarreracodigo" />
+                        <p:inputText id="tcarreracodigo" value="#{tcarreraController.selected.tcarreracodigo}" title="#{bundle.CreateTcarreraTitle_tcarreracodigo}" required="true" requiredMessage="#{bundle.CreateTcarreraRequiredMessage_tcarreracodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreranombre}" for="tcarreranombre" />
+                        <p:inputText id="tcarreranombre" value="#{tcarreraController.selected.tcarreranombre}" title="#{bundle.CreateTcarreraTitle_tcarreranombre}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreratitulo}" for="tcarreratitulo" />
+                        <p:inputText id="tcarreratitulo" value="#{tcarreraController.selected.tcarreratitulo}" title="#{bundle.CreateTcarreraTitle_tcarreratitulo}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreraareaconocimiento}" for="tcarreraareaconocimiento" />
+                        <p:inputText id="tcarreraareaconocimiento" value="#{tcarreraController.selected.tcarreraareaconocimiento}" title="#{bundle.CreateTcarreraTitle_tcarreraareaconocimiento}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarrerasubareaconocimiento}" for="tcarrerasubareaconocimiento" />
+                        <p:inputText id="tcarrerasubareaconocimiento" value="#{tcarreraController.selected.tcarrerasubareaconocimiento}" title="#{bundle.CreateTcarreraTitle_tcarrerasubareaconocimiento}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreranivelformacion}" for="tcarreranivelformacion" />
+                        <p:inputText id="tcarreranivelformacion" value="#{tcarreraController.selected.tcarreranivelformacion}" title="#{bundle.CreateTcarreraTitle_tcarreranivelformacion}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreramodalidad}" for="tcarreramodalidad" />
+                        <p:inputText id="tcarreramodalidad" value="#{tcarreraController.selected.tcarreramodalidad}" title="#{bundle.CreateTcarreraTitle_tcarreramodalidad}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreraduracion}" for="tcarreraduracion" />
+                        <p:inputText id="tcarreraduracion" value="#{tcarreraController.selected.tcarreraduracion}" title="#{bundle.CreateTcarreraTitle_tcarreraduracion}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarrerafecharesolucionaprobacion}" for="tcarrerafecharesolucionaprobacion" />
+                        <p:calendar id="tcarrerafecharesolucionaprobacion" pattern="MM/dd/yyyy" value="#{tcarreraController.selected.tcarrerafecharesolucionaprobacion}" title="#{bundle.EditTcarreraTitle_tcarrerafecharesolucionaprobacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreranumeroresolucionaprobacion}" for="tcarreranumeroresolucionaprobacion" />
+                        <p:inputText id="tcarreranumeroresolucionaprobacion" value="#{tcarreraController.selected.tcarreranumeroresolucionaprobacion}" title="#{bundle.CreateTcarreraTitle_tcarreranumeroresolucionaprobacion}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreratiposede}" for="tcarreratiposede" />
+                        <p:inputText id="tcarreratiposede" value="#{tcarreraController.selected.tcarreratiposede}" title="#{bundle.CreateTcarreraTitle_tcarreratiposede}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tcarreranombresede}" for="tcarreranombresede" />
+                        <p:inputText id="tcarreranombresede" value="#{tcarreraController.selected.tcarreranombresede}" title="#{bundle.CreateTcarreraTitle_tcarreranombresede}" />
+                        <p:outputLabel value="#{bundle.CreateTcarreraLabel_tescuelacodigo}" for="tescuelacodigo" />
+                        <p:selectOneMenu id="tescuelacodigo" value="#{tcarreraController.selected.tescuelacodigo}" >
+                            <f:selectItems value="#{tescuelaController.itemsAvailableSelectOne}"
+                                           var="tescuelacodigoItem"
+                                           itemValue="#{tescuelacodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tcarreraController.create}" value="#{bundle.Save}" update="display,:TcarreraListForm:datalist,:growl" oncomplete="handleSubmit(args,'TcarreraCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TcarreraCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

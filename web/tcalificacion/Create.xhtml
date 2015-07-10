@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcalificacionCreateDlg" widgetVar="TcalificacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTcalificacionTitle}">
+            <h:form id="TcalificacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcalificacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTcalificacionLabel_tcalificacioncodigo}" for="tcalificacioncodigo" />
+                        <p:inputText id="tcalificacioncodigo" value="#{tcalificacionController.selected.tcalificacioncodigo}" title="#{bundle.CreateTcalificacionTitle_tcalificacioncodigo}" required="true" requiredMessage="#{bundle.CreateTcalificacionRequiredMessage_tcalificacioncodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTcalificacionLabel_tcalificacionnombre}" for="tcalificacionnombre" />
+                        <p:inputText id="tcalificacionnombre" value="#{tcalificacionController.selected.tcalificacionnombre}" title="#{bundle.CreateTcalificacionTitle_tcalificacionnombre}" />
+                        <p:outputLabel value="#{bundle.CreateTcalificacionLabel_tusuariocedula}" for="tusuariocedula" />
+                        <p:selectOneMenu id="tusuariocedula" value="#{tcalificacionController.selected.tusuariocedula}" >
+                            <f:selectItems value="#{tusuarioController.itemsAvailableSelectOne}"
+                                           var="tusuariocedulaItem"
+                                           itemValue="#{tusuariocedulaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTcalificacionLabel_tindicadorcodigo}" for="tindicadorcodigo" />
+                        <p:selectOneMenu id="tindicadorcodigo" value="#{tcalificacionController.selected.tindicadorcodigo}" >
+                            <f:selectItems value="#{tindicadorController.itemsAvailableSelectOne}"
+                                           var="tindicadorcodigoItem"
+                                           itemValue="#{tindicadorcodigoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTcalificacionLabel_tcalculocodigo}" for="tcalculocodigo" />
+                        <p:selectOneMenu id="tcalculocodigo" value="#{tcalificacionController.selected.tcalculocodigo}" required="true" requiredMessage="#{bundle.EditTcalificacionRequiredMessage_tcalculocodigo}">
+                            <f:selectItems value="#{tcalculoController.itemsAvailableSelectOne}"
+                                           var="tcalculocodigoItem"
+                                           itemValue="#{tcalculocodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tcalificacionController.create}" value="#{bundle.Save}" update="display,:TcalificacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'TcalificacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TcalificacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

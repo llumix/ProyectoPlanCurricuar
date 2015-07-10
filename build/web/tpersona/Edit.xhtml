@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TpersonaEditDlg" widgetVar="TpersonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTpersonaTitle}">
+            <h:form id="TpersonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tpersonaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonacedula}" for="tpersonacedula" />
+                        <p:inputText id="tpersonacedula" value="#{tpersonaController.selected.tpersonacedula}" title="#{bundle.EditTpersonaTitle_tpersonacedula}" required="true" requiredMessage="#{bundle.EditTpersonaRequiredMessage_tpersonacedula}"/>
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonanombre}" for="tpersonanombre" />
+                        <p:inputText id="tpersonanombre" value="#{tpersonaController.selected.tpersonanombre}" title="#{bundle.EditTpersonaTitle_tpersonanombre}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonaapellido}" for="tpersonaapellido" />
+                        <p:inputText id="tpersonaapellido" value="#{tpersonaController.selected.tpersonaapellido}" title="#{bundle.EditTpersonaTitle_tpersonaapellido}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonaprovincia}" for="tpersonaprovincia" />
+                        <p:inputText id="tpersonaprovincia" value="#{tpersonaController.selected.tpersonaprovincia}" title="#{bundle.EditTpersonaTitle_tpersonaprovincia}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonaciudad}" for="tpersonaciudad" />
+                        <p:inputText id="tpersonaciudad" value="#{tpersonaController.selected.tpersonaciudad}" title="#{bundle.EditTpersonaTitle_tpersonaciudad}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonadireccion}" for="tpersonadireccion" />
+                        <p:inputText id="tpersonadireccion" value="#{tpersonaController.selected.tpersonadireccion}" title="#{bundle.EditTpersonaTitle_tpersonadireccion}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonatelefonofijo}" for="tpersonatelefonofijo" />
+                        <p:inputText id="tpersonatelefonofijo" value="#{tpersonaController.selected.tpersonatelefonofijo}" title="#{bundle.EditTpersonaTitle_tpersonatelefonofijo}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonatelefonomovil}" for="tpersonatelefonomovil" />
+                        <p:inputText id="tpersonatelefonomovil" value="#{tpersonaController.selected.tpersonatelefonomovil}" title="#{bundle.EditTpersonaTitle_tpersonatelefonomovil}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tpersonaemail}" for="tpersonaemail" />
+                        <p:inputText id="tpersonaemail" value="#{tpersonaController.selected.tpersonaemail}" title="#{bundle.EditTpersonaTitle_tpersonaemail}" />
+                        <p:outputLabel value="#{bundle.EditTpersonaLabel_tusuario}" for="tusuario" />
+                        <p:selectOneMenu id="tusuario" value="#{tpersonaController.selected.tusuario}" required="true" requiredMessage="#{bundle.EditTpersonaRequiredMessage_tusuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tusuarioController.itemsAvailableSelectOne}"
+                                           var="tusuarioItem"
+                                           itemValue="#{tusuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tpersonaController.update}" value="#{bundle.Save}" update="display,:TpersonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TpersonaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TpersonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

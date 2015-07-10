@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TevidenciaEditDlg" widgetVar="TevidenciaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTevidenciaTitle}">
+            <h:form id="TevidenciaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tevidenciaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTevidenciaLabel_tevidenciacodigo}" for="tevidenciacodigo" />
+                        <p:inputText id="tevidenciacodigo" value="#{tevidenciaController.selected.tevidenciacodigo}" title="#{bundle.EditTevidenciaTitle_tevidenciacodigo}" required="true" requiredMessage="#{bundle.EditTevidenciaRequiredMessage_tevidenciacodigo}"/>
+                        <p:outputLabel value="#{bundle.EditTevidenciaLabel_tevidencianombre}" for="tevidencianombre" />
+                        <p:inputText id="tevidencianombre" value="#{tevidenciaController.selected.tevidencianombre}" title="#{bundle.EditTevidenciaTitle_tevidencianombre}" />
+                        <p:outputLabel value="#{bundle.EditTevidenciaLabel_tevidenciaruta}" for="tevidenciaruta" />
+                        <p:inputText id="tevidenciaruta" value="#{tevidenciaController.selected.tevidenciaruta}" title="#{bundle.EditTevidenciaTitle_tevidenciaruta}" />
+                        <p:outputLabel value="#{bundle.EditTevidenciaLabel_tcalificacioncodigo}" for="tcalificacioncodigo" />
+                        <p:selectOneMenu id="tcalificacioncodigo" value="#{tevidenciaController.selected.tcalificacioncodigo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tcalificacionController.itemsAvailableSelectOne}"
+                                           var="tcalificacioncodigoItem"
+                                           itemValue="#{tcalificacioncodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tevidenciaController.update}" value="#{bundle.Save}" update="display,:TevidenciaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TevidenciaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TevidenciaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

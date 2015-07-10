@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTbaseconceptualindicadorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="TbaseconceptualindicadorListForm">
+                <p:panel header="#{bundle.ListTbaseconceptualindicadorTitle}">
+                    <p:dataTable id="datalist" value="#{tbaseconceptualindicadorController.items}" var="item"
+                                 selectionMode="single" selection="#{tbaseconceptualindicadorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.tbaseconceptualindicadorcodigo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbaseconceptualindicadorTitle_tbaseconceptualindicadorcodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tbaseconceptualindicadorcodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbaseconceptualindicadorTitle_tbaseconceptualindicadornombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tbaseconceptualindicadornombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbaseconceptualindicadorTitle_tbaseconceptualindicadordescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tbaseconceptualindicadordescripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbaseconceptualindicadorTitle_tindicadorcodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tindicadorcodigo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tbaseconceptualindicadorController.prepareCreate}" update=":TbaseconceptualindicadorCreateForm" oncomplete="PF('TbaseconceptualindicadorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TbaseconceptualindicadorViewForm" oncomplete="PF('TbaseconceptualindicadorViewDialog').show()" disabled="#{empty tbaseconceptualindicadorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TbaseconceptualindicadorEditForm" oncomplete="PF('TbaseconceptualindicadorEditDialog').show()" disabled="#{empty tbaseconceptualindicadorController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tbaseconceptualindicadorController.destroy}" update=":growl,datalist" disabled="#{empty tbaseconceptualindicadorController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

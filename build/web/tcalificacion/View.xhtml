@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcalificacionViewDlg" widgetVar="TcalificacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTcalificacionTitle}">
+            <h:form id="TcalificacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcalificacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTcalificacionLabel_tcalificacioncodigo}"/>
+                        <h:outputText value="#{tcalificacionController.selected.tcalificacioncodigo}" title="#{bundle.ViewTcalificacionTitle_tcalificacioncodigo}"/>
+                        <h:outputText value="#{bundle.ViewTcalificacionLabel_tcalificacionnombre}"/>
+                        <h:outputText value="#{tcalificacionController.selected.tcalificacionnombre}" title="#{bundle.ViewTcalificacionTitle_tcalificacionnombre}"/>
+                        <h:outputText value="#{bundle.ViewTcalificacionLabel_tusuariocedula}"/>
+                        <h:outputText value="#{tcalificacionController.selected.tusuariocedula}" title="#{bundle.ViewTcalificacionTitle_tusuariocedula}"/>
+                        <h:outputText value="#{bundle.ViewTcalificacionLabel_tindicadorcodigo}"/>
+                        <h:outputText value="#{tcalificacionController.selected.tindicadorcodigo}" title="#{bundle.ViewTcalificacionTitle_tindicadorcodigo}"/>
+                        <h:outputText value="#{bundle.ViewTcalificacionLabel_tcalculocodigo}"/>
+                        <h:outputText value="#{tcalificacionController.selected.tcalculocodigo}" title="#{bundle.ViewTcalificacionTitle_tcalculocodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TcalificacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

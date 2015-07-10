@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcarreraViewDlg" widgetVar="TcarreraViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTcarreraTitle}">
+            <h:form id="TcarreraViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcarreraController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreracodigo}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreracodigo}" title="#{bundle.ViewTcarreraTitle_tcarreracodigo}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreranombre}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreranombre}" title="#{bundle.ViewTcarreraTitle_tcarreranombre}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreratitulo}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreratitulo}" title="#{bundle.ViewTcarreraTitle_tcarreratitulo}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreraareaconocimiento}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreraareaconocimiento}" title="#{bundle.ViewTcarreraTitle_tcarreraareaconocimiento}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarrerasubareaconocimiento}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarrerasubareaconocimiento}" title="#{bundle.ViewTcarreraTitle_tcarrerasubareaconocimiento}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreranivelformacion}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreranivelformacion}" title="#{bundle.ViewTcarreraTitle_tcarreranivelformacion}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreramodalidad}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreramodalidad}" title="#{bundle.ViewTcarreraTitle_tcarreramodalidad}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreraduracion}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreraduracion}" title="#{bundle.ViewTcarreraTitle_tcarreraduracion}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarrerafecharesolucionaprobacion}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarrerafecharesolucionaprobacion}" title="#{bundle.ViewTcarreraTitle_tcarrerafecharesolucionaprobacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreranumeroresolucionaprobacion}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreranumeroresolucionaprobacion}" title="#{bundle.ViewTcarreraTitle_tcarreranumeroresolucionaprobacion}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreratiposede}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreratiposede}" title="#{bundle.ViewTcarreraTitle_tcarreratiposede}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tcarreranombresede}"/>
+                        <h:outputText value="#{tcarreraController.selected.tcarreranombresede}" title="#{bundle.ViewTcarreraTitle_tcarreranombresede}"/>
+                        <h:outputText value="#{bundle.ViewTcarreraLabel_tescuelacodigo}"/>
+                        <h:outputText value="#{tcarreraController.selected.tescuelacodigo}" title="#{bundle.ViewTcarreraTitle_tescuelacodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TcarreraViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

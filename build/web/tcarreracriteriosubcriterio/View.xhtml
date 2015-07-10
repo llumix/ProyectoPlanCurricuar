@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcarreracriteriosubcriterioViewDlg" widgetVar="TcarreracriteriosubcriterioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTcarreracriteriosubcriterioTitle}">
+            <h:form id="TcarreracriteriosubcriterioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcarreracriteriosubcriterioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTcarreracriteriosubcriterioLabel_tcarreracriteriosubcriteriocodigo}"/>
+                        <h:outputText value="#{tcarreracriteriosubcriterioController.selected.tcarreracriteriosubcriteriocodigo}" title="#{bundle.ViewTcarreracriteriosubcriterioTitle_tcarreracriteriosubcriteriocodigo}"/>
+                        <h:outputText value="#{bundle.ViewTcarreracriteriosubcriterioLabel_tcriteriosubcriteriocodigo}"/>
+                        <h:outputText value="#{tcarreracriteriosubcriterioController.selected.tcriteriosubcriteriocodigo}" title="#{bundle.ViewTcarreracriteriosubcriterioTitle_tcriteriosubcriteriocodigo}"/>
+                        <h:outputText value="#{bundle.ViewTcarreracriteriosubcriterioLabel_tcarreracodigo}"/>
+                        <h:outputText value="#{tcarreracriteriosubcriterioController.selected.tcarreracodigo}" title="#{bundle.ViewTcarreracriteriosubcriterioTitle_tcarreracodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TcarreracriteriosubcriterioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

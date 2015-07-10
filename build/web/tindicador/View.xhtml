@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TindicadorViewDlg" widgetVar="TindicadorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTindicadorTitle}">
+            <h:form id="TindicadorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tindicadorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTindicadorLabel_tindicadorcodigo}"/>
+                        <h:outputText value="#{tindicadorController.selected.tindicadorcodigo}" title="#{bundle.ViewTindicadorTitle_tindicadorcodigo}"/>
+                        <h:outputText value="#{bundle.ViewTindicadorLabel_tindicadornombre}"/>
+                        <h:outputText value="#{tindicadorController.selected.tindicadornombre}" title="#{bundle.ViewTindicadorTitle_tindicadornombre}"/>
+                        <h:outputText value="#{bundle.ViewTindicadorLabel_tindicadordescripcion}"/>
+                        <h:outputText value="#{tindicadorController.selected.tindicadordescripcion}" title="#{bundle.ViewTindicadorTitle_tindicadordescripcion}"/>
+                        <h:outputText value="#{bundle.ViewTindicadorLabel_tcriteriosubcriteriocodigo}"/>
+                        <h:outputText value="#{tindicadorController.selected.tcriteriosubcriteriocodigo}" title="#{bundle.ViewTindicadorTitle_tcriteriosubcriteriocodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TindicadorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

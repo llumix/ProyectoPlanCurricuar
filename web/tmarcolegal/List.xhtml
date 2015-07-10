@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTmarcolegalTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="TmarcolegalListForm">
+                <p:panel header="#{bundle.ListTmarcolegalTitle}">
+                    <p:dataTable id="datalist" value="#{tmarcolegalController.items}" var="item"
+                                 selectionMode="single" selection="#{tmarcolegalController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.tmarcolegalcodigo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTmarcolegalTitle_tmarcolegalcodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tmarcolegalcodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTmarcolegalTitle_tmarcolegaldescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tmarcolegaldescripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTmarcolegalTitle_tcriteriosubcriteriocodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tcriteriosubcriteriocodigo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tmarcolegalController.prepareCreate}" update=":TmarcolegalCreateForm" oncomplete="PF('TmarcolegalCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TmarcolegalViewForm" oncomplete="PF('TmarcolegalViewDialog').show()" disabled="#{empty tmarcolegalController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TmarcolegalEditForm" oncomplete="PF('TmarcolegalEditDialog').show()" disabled="#{empty tmarcolegalController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tmarcolegalController.destroy}" update=":growl,datalist" disabled="#{empty tmarcolegalController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

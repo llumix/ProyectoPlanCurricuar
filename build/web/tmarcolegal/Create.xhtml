@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TmarcolegalCreateDlg" widgetVar="TmarcolegalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTmarcolegalTitle}">
+            <h:form id="TmarcolegalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tmarcolegalController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTmarcolegalLabel_tmarcolegalcodigo}" for="tmarcolegalcodigo" />
+                        <p:inputText id="tmarcolegalcodigo" value="#{tmarcolegalController.selected.tmarcolegalcodigo}" title="#{bundle.CreateTmarcolegalTitle_tmarcolegalcodigo}" required="true" requiredMessage="#{bundle.CreateTmarcolegalRequiredMessage_tmarcolegalcodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTmarcolegalLabel_tmarcolegaldescripcion}" for="tmarcolegaldescripcion" />
+                        <p:inputText id="tmarcolegaldescripcion" value="#{tmarcolegalController.selected.tmarcolegaldescripcion}" title="#{bundle.CreateTmarcolegalTitle_tmarcolegaldescripcion}" />
+                        <p:outputLabel value="#{bundle.CreateTmarcolegalLabel_tcriteriosubcriteriocodigo}" for="tcriteriosubcriteriocodigo" />
+                        <p:selectOneMenu id="tcriteriosubcriteriocodigo" value="#{tmarcolegalController.selected.tcriteriosubcriteriocodigo}" >
+                            <f:selectItems value="#{tcriteriosubcriterioController.itemsAvailableSelectOne}"
+                                           var="tcriteriosubcriteriocodigoItem"
+                                           itemValue="#{tcriteriosubcriteriocodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tmarcolegalController.create}" value="#{bundle.Save}" update="display,:TmarcolegalListForm:datalist,:growl" oncomplete="handleSubmit(args,'TmarcolegalCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TmarcolegalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

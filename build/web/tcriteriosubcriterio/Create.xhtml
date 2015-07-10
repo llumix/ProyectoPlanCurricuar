@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcriteriosubcriterioCreateDlg" widgetVar="TcriteriosubcriterioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTcriteriosubcriterioTitle}">
+            <h:form id="TcriteriosubcriterioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcriteriosubcriterioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTcriteriosubcriterioLabel_tcriteriosubcriteriocodigo}" for="tcriteriosubcriteriocodigo" />
+                        <p:inputText id="tcriteriosubcriteriocodigo" value="#{tcriteriosubcriterioController.selected.tcriteriosubcriteriocodigo}" title="#{bundle.CreateTcriteriosubcriterioTitle_tcriteriosubcriteriocodigo}" required="true" requiredMessage="#{bundle.CreateTcriteriosubcriterioRequiredMessage_tcriteriosubcriteriocodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTcriteriosubcriterioLabel_tcriteriosubcriterionombre}" for="tcriteriosubcriterionombre" />
+                        <p:inputText id="tcriteriosubcriterionombre" value="#{tcriteriosubcriterioController.selected.tcriteriosubcriterionombre}" title="#{bundle.CreateTcriteriosubcriterioTitle_tcriteriosubcriterionombre}" />
+                        <p:outputLabel value="#{bundle.CreateTcriteriosubcriterioLabel_tcriteriosubcriteriodescripcion}" for="tcriteriosubcriteriodescripcion" />
+                        <p:inputText id="tcriteriosubcriteriodescripcion" value="#{tcriteriosubcriterioController.selected.tcriteriosubcriteriodescripcion}" title="#{bundle.CreateTcriteriosubcriterioTitle_tcriteriosubcriteriodescripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tcriteriosubcriterioController.create}" value="#{bundle.Save}" update="display,:TcriteriosubcriterioListForm:datalist,:growl" oncomplete="handleSubmit(args,'TcriteriosubcriterioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TcriteriosubcriterioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

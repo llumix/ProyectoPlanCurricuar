@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TperiodoViewDlg" widgetVar="TperiodoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTperiodoTitle}">
+            <h:form id="TperiodoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tperiodoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTperiodoLabel_tperiodocodigo}"/>
+                        <h:outputText value="#{tperiodoController.selected.tperiodocodigo}" title="#{bundle.ViewTperiodoTitle_tperiodocodigo}"/>
+                        <h:outputText value="#{bundle.ViewTperiodoLabel_tperiododescripcion}"/>
+                        <h:outputText value="#{tperiodoController.selected.tperiododescripcion}" title="#{bundle.ViewTperiodoTitle_tperiododescripcion}"/>
+                        <h:outputText value="#{bundle.ViewTperiodoLabel_tperiodofechainicio}"/>
+                        <h:outputText value="#{tperiodoController.selected.tperiodofechainicio}" title="#{bundle.ViewTperiodoTitle_tperiodofechainicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTperiodoLabel_tperiodofechafin}"/>
+                        <h:outputText value="#{tperiodoController.selected.tperiodofechafin}" title="#{bundle.ViewTperiodoTitle_tperiodofechafin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTperiodoLabel_tperiodovigente}"/>
+                        <h:outputText value="#{tperiodoController.selected.tperiodovigente}" title="#{bundle.ViewTperiodoTitle_tperiodovigente}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TperiodoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TindicadorCreateDlg" widgetVar="TindicadorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTindicadorTitle}">
+            <h:form id="TindicadorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tindicadorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTindicadorLabel_tindicadorcodigo}" for="tindicadorcodigo" />
+                        <p:inputText id="tindicadorcodigo" value="#{tindicadorController.selected.tindicadorcodigo}" title="#{bundle.CreateTindicadorTitle_tindicadorcodigo}" required="true" requiredMessage="#{bundle.CreateTindicadorRequiredMessage_tindicadorcodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTindicadorLabel_tindicadornombre}" for="tindicadornombre" />
+                        <p:inputText id="tindicadornombre" value="#{tindicadorController.selected.tindicadornombre}" title="#{bundle.CreateTindicadorTitle_tindicadornombre}" />
+                        <p:outputLabel value="#{bundle.CreateTindicadorLabel_tindicadordescripcion}" for="tindicadordescripcion" />
+                        <p:inputText id="tindicadordescripcion" value="#{tindicadorController.selected.tindicadordescripcion}" title="#{bundle.CreateTindicadorTitle_tindicadordescripcion}" />
+                        <p:outputLabel value="#{bundle.CreateTindicadorLabel_tcriteriosubcriteriocodigo}" for="tcriteriosubcriteriocodigo" />
+                        <p:selectOneMenu id="tcriteriosubcriteriocodigo" value="#{tindicadorController.selected.tcriteriosubcriteriocodigo}" >
+                            <f:selectItems value="#{tcriteriosubcriterioController.itemsAvailableSelectOne}"
+                                           var="tcriteriosubcriteriocodigoItem"
+                                           itemValue="#{tcriteriosubcriteriocodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tindicadorController.create}" value="#{bundle.Save}" update="display,:TindicadorListForm:datalist,:growl" oncomplete="handleSubmit(args,'TindicadorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TindicadorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbaseconceptualindicadorCreateDlg" widgetVar="TbaseconceptualindicadorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbaseconceptualindicadorTitle}">
+            <h:form id="TbaseconceptualindicadorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbaseconceptualindicadorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbaseconceptualindicadorLabel_tbaseconceptualindicadorcodigo}" for="tbaseconceptualindicadorcodigo" />
+                        <p:inputText id="tbaseconceptualindicadorcodigo" value="#{tbaseconceptualindicadorController.selected.tbaseconceptualindicadorcodigo}" title="#{bundle.CreateTbaseconceptualindicadorTitle_tbaseconceptualindicadorcodigo}" required="true" requiredMessage="#{bundle.CreateTbaseconceptualindicadorRequiredMessage_tbaseconceptualindicadorcodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTbaseconceptualindicadorLabel_tbaseconceptualindicadornombre}" for="tbaseconceptualindicadornombre" />
+                        <p:inputText id="tbaseconceptualindicadornombre" value="#{tbaseconceptualindicadorController.selected.tbaseconceptualindicadornombre}" title="#{bundle.CreateTbaseconceptualindicadorTitle_tbaseconceptualindicadornombre}" />
+                        <p:outputLabel value="#{bundle.CreateTbaseconceptualindicadorLabel_tbaseconceptualindicadordescripcion}" for="tbaseconceptualindicadordescripcion" />
+                        <p:inputText id="tbaseconceptualindicadordescripcion" value="#{tbaseconceptualindicadorController.selected.tbaseconceptualindicadordescripcion}" title="#{bundle.CreateTbaseconceptualindicadorTitle_tbaseconceptualindicadordescripcion}" />
+                        <p:outputLabel value="#{bundle.CreateTbaseconceptualindicadorLabel_tindicadorcodigo}" for="tindicadorcodigo" />
+                        <p:selectOneMenu id="tindicadorcodigo" value="#{tbaseconceptualindicadorController.selected.tindicadorcodigo}" >
+                            <f:selectItems value="#{tindicadorController.itemsAvailableSelectOne}"
+                                           var="tindicadorcodigoItem"
+                                           itemValue="#{tindicadorcodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbaseconceptualindicadorController.create}" value="#{bundle.Save}" update="display,:TbaseconceptualindicadorListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbaseconceptualindicadorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbaseconceptualindicadorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

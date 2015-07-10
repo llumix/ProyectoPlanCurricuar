@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TcalculoCreateDlg" widgetVar="TcalculoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTcalculoTitle}">
+            <h:form id="TcalculoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tcalculoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTcalculoLabel_tcalculocodigo}" for="tcalculocodigo" />
+                        <p:inputText id="tcalculocodigo" value="#{tcalculoController.selected.tcalculocodigo}" title="#{bundle.CreateTcalculoTitle_tcalculocodigo}" required="true" requiredMessage="#{bundle.CreateTcalculoRequiredMessage_tcalculocodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateTcalculoLabel_tcalculonombre}" for="tcalculonombre" />
+                        <p:inputText id="tcalculonombre" value="#{tcalculoController.selected.tcalculonombre}" title="#{bundle.CreateTcalculoTitle_tcalculonombre}" />
+                        <p:outputLabel value="#{bundle.CreateTcalculoLabel_tcalculodescripcion}" for="tcalculodescripcion" />
+                        <p:inputText id="tcalculodescripcion" value="#{tcalculoController.selected.tcalculodescripcion}" title="#{bundle.CreateTcalculoTitle_tcalculodescripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tcalculoController.create}" value="#{bundle.Save}" update="display,:TcalculoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TcalculoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TcalculoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
